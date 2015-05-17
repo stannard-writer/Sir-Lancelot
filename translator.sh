@@ -56,6 +56,18 @@ function default {
 	fi
 }
 
+function camera_look {
+	if [ -n "$2" ]
+	then
+		echo "servo 1 $2"
+	fi
+
+	if [ -n "$3" ]
+	then
+		echo "servo 0 $3"
+	fi
+}
+
 (echo servo 0 0
 echo servo 1 .55
 echo led 0 1 0
@@ -127,6 +139,11 @@ do
 	ch)
 		echo servo 0 0
 		echo servo 1 .55
+		;;
+
+	#Camera look: short hand for two servo commands
+	cl)
+		camera_look $cmd
 		;;
 
 	# Nod: nods camera up/down
